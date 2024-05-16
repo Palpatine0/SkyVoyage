@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/rounded_border"
+    android:padding="16dp"
+    android:layout_marginBottom="8dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvFlightTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2:57pm - 7:07pm"
+            android:textAppearance="@style/TextAppearance.Material3.Body1"
+            android:textColor="@color/black"
+            android:layout_marginEnd="16dp"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/tvFlightRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dallas (DFW) - Baltimore (BWI)"
+            android:textAppearance="@style/TextAppearance.Material3.Body2"
+            android:textColor="@color/gray"
+            android:paddingTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvFlightDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3h 10m (Nonstop)"
+            android:textAppearance="@style/TextAppearance.Material3.Body2"
+            android:textColor="@color/gray"
+            android:paddingTop="4dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="4dp">
+
+            <ImageView
+                android:id="@+id/ivAirlineLogo"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/business"
+                android:contentDescription="Airline logo"/>
+
+            <TextView
+                android:id="@+id/tvAirlineName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Frontier Airlines"
+                android:textAppearance="@style/TextAppearance.Material3.Body2"
+                android:textColor="@color/black"
+                android:paddingStart="8dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvFlightPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$160"
+        android:textAppearance="@style/TextAppearance.Material3.Body1"
+        android:textColor="@color/black"
+        android:gravity="end"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+</LinearLayout>
