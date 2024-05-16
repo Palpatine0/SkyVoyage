@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     android:background="@drawable/rounded_border"
     android:padding="16dp"
     android:layout_marginBottom="8dp">
 
     <LinearLayout
+        android:id="@+id/linearLayoutDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/linearLayoutPrice"
+        app:layout_constraintHorizontal_weight="1">
 
         <TextView
             android:id="@+id/tvFlightTime"
@@ -22,7 +27,6 @@
             android:textColor="@color/black"
             android:layout_marginEnd="16dp"
             android:textStyle="bold"/>
-
 
         <TextView
             android:id="@+id/tvFlightRoute"
@@ -66,14 +70,56 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvFlightPrice"
+    <LinearLayout
+        android:id="@+id/linearLayoutPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$160"
-        android:textAppearance="@style/TextAppearance.Material3.Body1"
-        android:textColor="@color/black"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayoutRemaining"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/tvFlightPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$160"
+            android:textAppearance="@style/TextAppearance.Material3.Body1"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutRemaining"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutPrice"
         android:gravity="end"
-        android:textStyle="bold"
-        android:textSize="30dp"/>
-</LinearLayout>
+        android:background="@drawable/rounded_rectangle"
+        android:layout_marginTop="34dp">
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textAppearance="@style/TextAppearance.Material3.Body2"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="5dp"
+            />
+
+        <TextView
+            android:id="@+id/tvRemainingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remains"
+            android:textAppearance="@style/TextAppearance.Material3.Body2"
+            android:textColor="@android:color/white"
+            />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

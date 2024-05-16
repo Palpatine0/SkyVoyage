@@ -32,6 +32,9 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
         holder.tvFlightPrice.setText(flight.getPrice());
         holder.tvAirlineName.setText(flight.getAirlineName());
         holder.ivAirlineLogo.setImageResource(flight.getAirlineLogo());
+
+        // Correctly setting the count as text
+        holder.tvCount.setText(String.valueOf(flight.getCount()));
     }
 
     @Override
@@ -40,7 +43,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
     }
 
     public class FlightViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvFlightTime, tvFlightDuration, tvFlightRoute, tvFlightPrice, tvAirlineName;
+        public TextView tvFlightTime, tvFlightDuration, tvFlightRoute, tvFlightPrice, tvAirlineName, tvCount;
         public ImageView ivAirlineLogo;
 
         public FlightViewHolder(View view) {
@@ -51,6 +54,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
             tvFlightPrice = view.findViewById(R.id.tvFlightPrice);
             tvAirlineName = view.findViewById(R.id.tvAirlineName);
             ivAirlineLogo = view.findViewById(R.id.ivAirlineLogo);
+            tvCount = view.findViewById(R.id.tvCount);
         }
     }
 }

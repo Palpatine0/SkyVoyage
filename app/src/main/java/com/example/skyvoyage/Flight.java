@@ -7,14 +7,16 @@ public class Flight {
     private String price;
     private String airlineName;
     private int airlineLogo;
+    private int count;
 
-    public Flight(String time, String duration, String route, String price, String airlineName, int airlineLogo) {
+    public Flight(String time, String duration, String route, String price, String airlineName, int airlineLogo, int count) {
         this.time = time;
         this.duration = duration;
         this.route = route;
         this.price = price;
         this.airlineName = airlineName;
         this.airlineLogo = airlineLogo;
+        this.count = count;
     }
 
     public String getTime() {
@@ -63,5 +65,13 @@ public class Flight {
 
     public void setAirlineLogo(int airlineLogo) {
         this.airlineLogo = airlineLogo;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
