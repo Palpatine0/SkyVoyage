@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="30dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Payment Method Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:text="Select Payment Method"
+            android:textAppearance="@style/TextAppearance.Material3.Headline6"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <!-- Payment Issuer Selection -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="Select Payment Issuer"
+            android:textAppearance="@style/TextAppearance.Material3.Body1"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Pay by Credit Card"
+            android:textAppearance="@style/TextAppearance.Material3.Body1"
+            android:textColor="@color/gray"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/rounded_border"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+
+            <Button
+                android:id="@+id/btnAddCreditCard"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/expedia_blue"
+                android:padding="8dp"
+                android:text="Add Credit Card"
+                android:textSize="30px"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="Pay by Payment Service"
+            android:textAppearance="@style/TextAppearance.Material3.Body1"
+            android:textColor="@color/gray"
+            android:textSize="12dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/rounded_border"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+
+            <!-- res/layout/activity_payment.xml -->
+            <!-- res/layout/activity_payment.xml -->
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <include
+                    layout="@layout/selectable_item"
+                    android:id="@+id/paypalCard" />
+
+                <include
+                    layout="@layout/selectable_item"
+                    android:id="@+id/applePayCard" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <!-- Proceed to Payment Button -->
+        <Button
+            android:id="@+id/btnProceedToPayment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/expedia_blue"
+            android:padding="16dp"
+            android:text="Proceed to Payment"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</ScrollView>

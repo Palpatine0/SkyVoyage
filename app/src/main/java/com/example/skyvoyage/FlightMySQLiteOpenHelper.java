@@ -61,37 +61,6 @@ public class FlightMySQLiteOpenHelper extends SQLiteOpenHelper {
         return db.update(TABLE_NAME_FLIGHT, values, "id = ?", new String[]{String.valueOf(flight.getId())});
     }
 
-    public List<Flight> queryFromDbById(int id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        List<Flight> flightList = new ArrayList<>();
-        Cursor cursor = db.query(
-                TABLE_NAME_FLIGHT,
-                new String[]{"id", "time", "duration", "route", "price", "airlineName", "airlineLogo", "count"},
-                "id = ?",
-                new String[]{String.valueOf(id)},
-                null,
-                null,
-                null
-        );
-
-        if (cursor != null) {
-            while (cursor.moveToNext()) {
-                int flightId = cursor.getInt(cursor.getColumnIndex("id"));
-                String time = cursor.getString(cursor.getColumnIndex("time"));
-                String duration = cursor.getString(cursor.getColumnIndex("duration"));
-                String route = cursor.getString(cursor.getColumnIndex("route"));
-                String price = cursor.getString(cursor.getColumnIndex("price"));
-                String airlineName = cursor.getString(cursor.getColumnIndex("airlineName"));
-                int airlineLogo = cursor.getInt(cursor.getColumnIndex("airlineLogo"));
-                int count = cursor.getInt(cursor.getColumnIndex("count"));
-
-                Flight flight = new Flight(flightId, time, duration, route, price, airlineName, airlineLogo, count);
-                flightList.add(flight);
-            }
-            cursor.close();
-        }
-        return flightList;
-    }
 
     public List<Flight> queryAllFromDb() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -108,6 +77,38 @@ public class FlightMySQLiteOpenHelper extends SQLiteOpenHelper {
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
+                int id = cursor.getInt(cursor.getColumnIndex("id"));
+                String time = cursor.getString(cursor.getColumnIndex("time"));
+                String duration = cursor.getString(cursor.getColumnIndex("duration"));
+                String route = cursor.getString(cursor.getColumnIndex("route"));
+                String price = cursor.getString(cursor.getColumnIndex("price"));
+                String airlineName = cursor.getString(cursor.getColumnIndex("airlineName"));
+                int airlineLogo = cursor.getInt(cursor.getColumnIndex("airlineLogo"));
+                int count = cursor.getInt(cursor.getColumnIndex("count"));
+
+                Flight flight = new Flight(id, time, duration, route, price, airlineName, airlineLogo, count);
+                flightList.add(flight);
+            }
+            cursor.close();
+        }
+        return flightList;
+    }
+
+    public List<Flight> queryFromDbById(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<Flight> flightList = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME_FLIGHT,
+                new String[]{"id", "time", "duration", "route", "price", "airlineName", "airlineLogo", "count"},
+                "id = ?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
                 int flightId = cursor.getInt(cursor.getColumnIndex("id"));
                 String time = cursor.getString(cursor.getColumnIndex("time"));
                 String duration = cursor.getString(cursor.getColumnIndex("duration"));
@@ -124,4 +125,5 @@ public class FlightMySQLiteOpenHelper extends SQLiteOpenHelper {
         }
         return flightList;
     }
+
 }

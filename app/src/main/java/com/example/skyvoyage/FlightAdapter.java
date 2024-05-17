@@ -15,7 +15,6 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
     private List<Flight> flightList;
     private Context context;
 
-    // Corrected constructor to include context
     public FlightAdapter(Context context, List<Flight> flightList) {
         this.context = context;
         this.flightList = flightList;
