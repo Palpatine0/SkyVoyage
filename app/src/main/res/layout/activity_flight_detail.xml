@@ -204,7 +204,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Select"
-                    android:backgroundTint="@color/blue"
                     android:textColor="@color/white"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

@@ -1,5 +1,6 @@
 package com.example.skyvoyage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 public class FlightOrderActivity extends AppCompatActivity {
 
@@ -30,9 +33,15 @@ public class FlightOrderActivity extends AppCompatActivity {
 
         flightMySQLiteOpenHelper = new FlightMySQLiteOpenHelper(this);
         int flightId = getIntent().getIntExtra("FLIGHT_ID", -1);
-        flight = flightMySQLiteOpenHelper.queryFromDbById(flightId).get(0);
 
-        populateFlightDetails();
+        List<Flight> flights = flightMySQLiteOpenHelper.queryFromDbById(flightId);
+        if (flights != null && !flights.isEmpty()) {
+            flight = flights.get(0);
+            populateFlightDetails();
+        } else {
+            Toast.makeText(this, "Flight not found", Toast.LENGTH_SHORT).show();
+            finish(); // Close the activity if flight not found
+        }
     }
 
     private void initView() {
@@ -48,6 +57,11 @@ public class FlightOrderActivity extends AppCompatActivity {
         cbTravelInsurance = findViewById(R.id.cbTravelInsurance);
         btnProceedToCheckout = findViewById(R.id.btnProceedToCheckout);
         btnSelectInsurance = findViewById(R.id.btnSelectInsurance);
+
+        btnProceedToCheckout.setOnClickListener(v -> {
+            Intent intent = new Intent(FlightOrderActivity.this, PaymentActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void populateFlightDetails() {
@@ -67,10 +81,6 @@ public class FlightOrderActivity extends AppCompatActivity {
                 insuranceCost = 0;
                 updateTotalPrice();
             }
-        });
-
-        btnProceedToCheckout.setOnClickListener(v -> {
-            // Handle the proceed to checkout logic here
         });
     }
 

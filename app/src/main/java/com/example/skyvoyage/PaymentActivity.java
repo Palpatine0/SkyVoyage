@@ -4,27 +4,51 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.card.MaterialCardView;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    private RadioGroup rgPaymentOptions;
     private EditText etCardNumber, etExpiryDate, etCVV;
     private Button btnProceedToPayment;
+    private MaterialCardView paypalCard, applePayCard;
+    private TextView paypalText, applePayText;
+    private ImageView paypalRadio, applePayRadio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        etCardNumber = findViewById(R.id.etCardNumber);
-        etExpiryDate = findViewById(R.id.etExpiryDate);
-        etCVV = findViewById(R.id.etCVV);
         btnProceedToPayment = findViewById(R.id.btnProceedToPayment);
+
+        paypalCard = findViewById(R.id.paypalCard);
+        applePayCard = findViewById(R.id.applePayCard);
+
+        // Set text and image for PayPal
+        paypalText = paypalCard.findViewById(R.id.itemText);
+        paypalText.setText("PayPal");
+        paypalCard.findViewById(R.id.itemImage).setBackgroundResource(R.drawable.paypay);
+        paypalRadio = paypalCard.findViewById(R.id.itemRadio);
+
+        // Set text and image for Apple Pay
+        applePayText = applePayCard.findViewById(R.id.itemText);
+        applePayText.setText("Apple Pay");
+        applePayCard.findViewById(R.id.itemImage).setBackgroundResource(R.drawable.apple_pay);
+        applePayRadio = applePayCard.findViewById(R.id.itemRadio);
+
+        paypalCard.setOnClickListener(v -> {
+            setSelectedPaymentMethod(paypalCard, paypalRadio);
+            setDeselectedPaymentMethod(applePayCard, applePayRadio);
+        });
+
+        applePayCard.setOnClickListener(v -> {
+            setSelectedPaymentMethod(applePayCard, applePayRadio);
+            setDeselectedPaymentMethod(paypalCard, paypalRadio);
+        });
 
         btnProceedToPayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,16 +58,23 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
 
-    private void handlePayment() {
-        int selectedPaymentMethodId = rgPaymentOptions.getCheckedRadioButtonId();
-        RadioButton selectedPaymentMethod = findViewById(selectedPaymentMethodId);
+    private void setSelectedPaymentMethod(MaterialCardView card, ImageView radio) {
+        card.setChecked(true);
+        radio.setBackgroundResource(R.drawable.checked);
+    }
 
-        if (selectedPaymentMethod == null) {
+    private void setDeselectedPaymentMethod(MaterialCardView card, ImageView radio) {
+        card.setChecked(false);
+        radio.setBackgroundResource(R.drawable.unchecked);
+    }
+
+    private void handlePayment() {
+        if (!paypalCard.isChecked() && !applePayCard.isChecked()) {
             Toast.makeText(this, "Please select a payment method", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String paymentMethod = selectedPaymentMethod.getText().toString();
+        String paymentMethod = paypalCard.isChecked() ? "PayPal" : "Apple Pay";
         String cardNumber = etCardNumber.getText().toString().trim();
         String expiryDate = etExpiryDate.getText().toString().trim();
         String cvv = etCVV.getText().toString().trim();
