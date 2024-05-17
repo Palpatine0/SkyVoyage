@@ -12,30 +12,28 @@ public class FlightListingsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FlightAdapter flightAdapter;
     private List<Flight> flightList;
+    private FlightMySQLiteOpenHelper flightMySQLiteOpenHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_listings);
 
+        flightMySQLiteOpenHelper = new FlightMySQLiteOpenHelper(this);
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         flightList = new ArrayList<>();
-        flightAdapter = new FlightAdapter(flightList);
+        flightAdapter = new FlightAdapter(this, flightList);
         recyclerView.setAdapter(flightAdapter);
 
-        // Populate the flight list
-        populateFlightList();
+        // Populate the flight list from the database
+        populateFlightListFromDb();
     }
 
-    private void populateFlightList() {
-        flightList.add(new Flight("2:57pm - 7:07pm", "3h 10m (Nonstop)", "Dallas (DFW) - Baltimore (BWI)", "$160", "Frontier Airlines",R.drawable.frontier_airline));
-        flightList.add(new Flight("7:30am - 11:34am", "3h 4m (Nonstop)", "Dallas (DFW) - Washington (IAD)", "$208", "American Airlines",R.drawable.american_airlines));
-        flightList.add(new Flight("2:57pm - 7:07pm", "3h 10m (Nonstop)", "Dallas (DFW) - Baltimore (BWI)", "$160", "Frontier Airlines",R.drawable.frontier_airline));
-        flightList.add(new Flight("7:30am - 11:34am", "3h 4m (Nonstop)", "Dallas (DFW) - Washington (IAD)", "$208", "American Airlines",R.drawable.american_airlines));
-        flightList.add(new Flight("7:30am - 11:34am", "3h 4m (Nonstop)", "Dallas (DFW) - Washington (IAD)", "$208", "American Airlines",R.drawable.american_airlines));
-        flightList.add(new Flight("7:30am - 11:34am", "3h 4m (Nonstop)", "Dallas (DFW) - Washington (IAD)", "$208", "American Airlines",R.drawable.american_airlines));
-        // Add more flights as needed
+    private void populateFlightListFromDb() {
+        flightList.clear();
+        flightList.addAll(flightMySQLiteOpenHelper.queryAllFromDb());
         flightAdapter.notifyDataSetChanged();
     }
 }

@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Sky Voyage</string>
+    <string name="app_name">SkyVoyage</string>
+    <string-array name="airline_logos">
+        <item>Frontier Airlines</item>
+        <item>American Airlines</item>
+        <!-- Add more items as needed -->
+    </string-array>
 </resources>
