@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Flight Summary -->
+        <TextView
+            android:id="@+id/tvFlightSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flight Summary"
+            android:textAppearance="@style/TextAppearance.Material3.Headline6"
+            android:textColor="@color/black"
+            android:paddingBottom="16dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tvFlightTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flight Time"
+            android:textAppearance="@style/TextAppearance.Material3.Body1"
+            android:textColor="@color/black"
+            android:paddingBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvFlightDuration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flight Duration"
+            android:textAppearance="@style/TextAppearance.Material3.Body2"
+            android:textColor="@color/gray"
+            android:paddingBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvFlightRoute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Flight Route"
+            android:textAppearance="@style/TextAppearance.Material3.Body2"
+            android:textColor="@color/gray"
+            android:paddingBottom="16dp" />
+
+        <!-- Passenger Details -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Passenger Name"
+            android:paddingBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassengerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Passenger ID"
+            android:paddingBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassengerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:paddingBottom="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etContactNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Travel Insurance Option -->
+        <CheckBox
+            android:id="@+id/cbTravelInsurance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Travel Insurance"
+            android:textColor="@color/black"
+            android:paddingBottom="8dp" />
+
+        <!-- Button to Select Insurance Type -->
+        <Button
+            android:id="@+id/btnSelectInsurance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Insurance Type"
+            android:visibility="gone"
+            android:onClick="showInsuranceDialog" />
+
+        <!-- Insurance Cost -->
+        <TextView
+            android:id="@+id/tvInsuranceCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insurance Cost: $0"
+            android:textAppearance="@style/TextAppearance.Material3.Body2"
+            android:textColor="@color/gray"
+            android:paddingBottom="16dp" />
+
+        <!-- Total Price -->
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Price: $0"
+            android:textAppearance="@style/TextAppearance.Material3.Headline6"
+            android:textColor="@color/black"
+            android:paddingBottom="16dp" />
+
+        <!-- Proceed to Checkout Button -->
+        <Button
+            android:id="@+id/btnProceedToCheckout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Proceed to Checkout"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"
+            android:padding="16dp" />
+
+    </LinearLayout>
+</ScrollView>
