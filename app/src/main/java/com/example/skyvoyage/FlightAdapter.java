@@ -1,5 +1,7 @@
 package com.example.skyvoyage;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +13,24 @@ import java.util.List;
 
 public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightViewHolder> {
     private List<Flight> flightList;
+    private Context context;
 
-    public FlightAdapter(List<Flight> flightList) {
+    // Corrected constructor to include context
+    public FlightAdapter(Context context, List<Flight> flightList) {
+        this.context = context;
         this.flightList = flightList;
     }
 
+    @NonNull
     @Override
-    public FlightViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FlightViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_flight_listing, parent, false);
         return new FlightViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(FlightViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FlightViewHolder holder, int position) {
         Flight flight = flightList.get(position);
         holder.tvFlightTime.setText(flight.getTime());
         holder.tvFlightDuration.setText(flight.getDuration());
@@ -32,9 +38,13 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
         holder.tvFlightPrice.setText(flight.getPrice());
         holder.tvAirlineName.setText(flight.getAirlineName());
         holder.ivAirlineLogo.setImageResource(flight.getAirlineLogo());
-
-        // Correctly setting the count as text
         holder.tvCount.setText(String.valueOf(flight.getCount()));
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, FlightDetailActivity.class);
+            intent.putExtra("FLIGHT_ID", flight.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -42,7 +52,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
         return flightList.size();
     }
 
-    public class FlightViewHolder extends RecyclerView.ViewHolder {
+    public static class FlightViewHolder extends RecyclerView.ViewHolder {
         public TextView tvFlightTime, tvFlightDuration, tvFlightRoute, tvFlightPrice, tvAirlineName, tvCount;
         public ImageView ivAirlineLogo;
 

@@ -1,6 +1,7 @@
 package com.example.skyvoyage;
 
 public class Flight {
+    private int id;
     private String time;
     private String duration;
     private String route;
@@ -9,7 +10,8 @@ public class Flight {
     private int airlineLogo;
     private int count;
 
-    public Flight(String time, String duration, String route, String price, String airlineName, int airlineLogo, int count) {
+    public Flight(int id, String time, String duration, String route, String price, String airlineName, int airlineLogo, int count) {
+        this.id = id;
         this.time = time;
         this.duration = duration;
         this.route = route;
@@ -73,5 +75,13 @@ public class Flight {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
