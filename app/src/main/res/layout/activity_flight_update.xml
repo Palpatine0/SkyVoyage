@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID" />
+
+    <EditText
+        android:id="@+id/et_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Time" />
+
+    <EditText
+        android:id="@+id/et_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Duration" />
+
+    <EditText
+        android:id="@+id/et_route"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Route" />
+
+    <EditText
+        android:id="@+id/et_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Price" />
+
+    <EditText
+        android:id="@+id/et_airline_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Airline Name" />
+
+    <Spinner
+        android:id="@+id/sp_airline_logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/airline_logos" />
+
+    <EditText
+        android:id="@+id/et_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Count" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:onClick="updateData" />
+</LinearLayout>
