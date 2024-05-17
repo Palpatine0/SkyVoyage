@@ -18,21 +18,7 @@
         <activity
             android:name=".FlightOrderActivity"
             android:exported="true" />
-        <activity
-            android:name=".FlightCRUDActivity"
-            android:exported="true" />
-        <activity
-            android:name=".FlightQueryActivity"
-            android:exported="true" />
-        <activity
-            android:name=".FlightUpdateActivity"
-            android:exported="true" />
-        <activity
-            android:name=".FlightInsertActivity"
-            android:exported="true" />
-        <activity
-            android:name=".FlightDeleteActivity"
-            android:exported="true" />
+
         <activity
             android:name=".FlightDetailActivity"
             android:exported="true" />
@@ -52,6 +38,28 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:exported="true" />
+
+
+        <activity
+            android:name=".FlightCRUDActivity"
+            android:exported="true" >
+           <!-- <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity
+            android:name=".FlightQueryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FlightUpdateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FlightInsertActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FlightDeleteActivity"
             android:exported="true" />
     </application>
 
