@@ -6,9 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.skyvoyage.Flight;
+import com.example.skyvoyage.FlightDetailActivity;
+import com.example.skyvoyage.R;
+
 import java.util.List;
 
 public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightViewHolder> {
@@ -31,6 +37,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
     @Override
     public void onBindViewHolder(@NonNull FlightViewHolder holder, int position) {
         Flight flight = flightList.get(position);
+
         holder.tvFlightTime.setText(flight.getTime());
         holder.tvFlightDuration.setText(flight.getDuration());
         holder.tvFlightRoute.setText(flight.getRoute());
@@ -39,11 +46,21 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
         holder.ivAirlineLogo.setImageResource(flight.getAirlineLogo());
         holder.tvCount.setText(String.valueOf(flight.getCount()));
 
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, FlightDetailActivity.class);
-            intent.putExtra("FLIGHT_ID", flight.getId());
-            context.startActivity(intent);
-        });
+        if (flight.getCount() == 0) {
+            holder.linearLayoutRemaining.setVisibility(View.GONE);
+            holder.linearLayoutSoldOut.setVisibility(View.VISIBLE);
+            holder.itemView.setEnabled(false);
+            holder.itemView.setOnClickListener(null);
+        } else {
+            holder.linearLayoutRemaining.setVisibility(View.VISIBLE);
+            holder.linearLayoutSoldOut.setVisibility(View.GONE);
+            holder.itemView.setEnabled(true);
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, FlightDetailActivity.class);
+                intent.putExtra("FLIGHT_ID", flight.getId());
+                context.startActivity(intent);
+            });
+        }
     }
 
     @Override
@@ -52,8 +69,9 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
     }
 
     public static class FlightViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvFlightTime, tvFlightDuration, tvFlightRoute, tvFlightPrice, tvAirlineName, tvCount;
+        public TextView tvFlightTime, tvFlightDuration, tvFlightRoute, tvFlightPrice, tvAirlineName, tvCount, tvRemainingText, tvSoldOutText;
         public ImageView ivAirlineLogo;
+        public LinearLayout linearLayoutRemaining, linearLayoutSoldOut;
 
         public FlightViewHolder(View view) {
             super(view);
@@ -64,6 +82,10 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
             tvAirlineName = view.findViewById(R.id.tvAirlineName);
             ivAirlineLogo = view.findViewById(R.id.ivAirlineLogo);
             tvCount = view.findViewById(R.id.tvCount);
+            tvRemainingText = view.findViewById(R.id.tvRemainingText);
+            linearLayoutRemaining = view.findViewById(R.id.linearLayoutRemaining);
+            linearLayoutSoldOut = view.findViewById(R.id.linearLayoutSoldOut);
+            tvSoldOutText = view.findViewById(R.id.tvSoldOutText);
         }
     }
 }

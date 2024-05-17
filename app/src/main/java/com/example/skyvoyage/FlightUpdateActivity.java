@@ -54,6 +54,9 @@ public class FlightUpdateActivity extends AppCompatActivity {
             case "American Airlines":
                 airlineLogo = ImageConstants.AMERICAN_AIRLINES_LOGO;
                 break;
+            case "United Airlines":
+                airlineLogo = ImageConstants.UNITED_AIRLINES_LOGO;
+                break;
             default:
                 airlineLogo = 0; // Default logo or handle error
                 break;
