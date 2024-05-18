@@ -13,34 +13,51 @@
         android:theme="@style/Theme.SkyVoyage"
         tools:targetApi="31">
         <activity
-            android:name=".PaymentActivity"
-            android:exported="true" />
-        <activity
-            android:name=".FlightOrderActivity"
+            android:name=".MainActivity"
             android:exported="true" />
 
-        <activity
-            android:name=".FlightDetailActivity"
-            android:exported="true" />
-        <activity
-            android:name=".FlightListingsActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
+
+        <!--Section 1-->
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--Section 2-->
         <activity
-            android:name=".MainActivity"
+            android:name=".FlightListingsActivity"
+            android:exported="true">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+        <!--Section 3-->
+        <activity
+            android:name=".FlightDetailActivity"
+            android:exported="true" />
+
+        <!--Section 4-->
+        <activity
+            android:name=".FlightOrderActivity"
+            android:exported="true" />
+
+        <!--Section 5-->
+        <activity
+            android:name=".PaymentActivity"
             android:exported="true" />
 
 
+        <!--CURD-->
         <activity
             android:name=".FlightCRUDActivity"
             android:exported="true" >
@@ -61,6 +78,9 @@
         <activity
             android:name=".FlightDeleteActivity"
             android:exported="true" />
+
+
+
     </application>
 
 </manifest>
