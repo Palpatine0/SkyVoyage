@@ -11,31 +11,43 @@
         android:layout_height="wrap_content"
         android:hint="ID" />
 
-    <EditText
-        android:id="@+id/et_departure_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Departure Time"
-        android:focusable="false" />
-
-    <Button
-        android:id="@+id/btn_select_departure_time"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Departure Time" />
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/et_departure_time"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:hint="Departure Time"
+            android:focusable="false" />
+        <Button
+            android:id="@+id/btn_select_departure_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Select" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_arrival_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Arrival Time"
-        android:focusable="false" />
 
-    <Button
-        android:id="@+id/btn_select_arrival_time"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Arrival Time" />
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/et_arrival_time"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:hint="Arrival Time"
+            android:focusable="false" />
+
+        <Button
+            android:id="@+id/btn_select_arrival_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:text="Select" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/et_duration"

@@ -10,11 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.skyvoyage.Flight;
-import com.example.skyvoyage.FlightDetailActivity;
-import com.example.skyvoyage.R;
-
 import java.util.List;
 
 public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightViewHolder> {
@@ -66,6 +61,11 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.FlightView
     @Override
     public int getItemCount() {
         return flightList.size();
+    }
+
+    public void updateData(List<Flight> newFlightList) {
+        this.flightList = newFlightList;
+        notifyDataSetChanged();
     }
 
     public static class FlightViewHolder extends RecyclerView.ViewHolder {

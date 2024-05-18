@@ -52,6 +52,8 @@ public class FlightUpdateActivity extends AppCompatActivity {
         etAirlineName = findViewById(R.id.et_airline_name);
         spAirlineLogo = findViewById(R.id.sp_airline_logo);
         etCount = findViewById(R.id.et_count);
+        etPrice.addTextChangedListener(new PriceTextWatcher(etPrice));
+
 
         Button btnSelectDepartureTime = findViewById(R.id.btn_select_departure_time);
         Button btnSelectArrivalTime = findViewById(R.id.btn_select_arrival_time);
