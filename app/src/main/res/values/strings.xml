@@ -3,6 +3,8 @@
     <string-array name="airline_logos">
         <item>Frontier Airlines</item>
         <item>American Airlines</item>
+        <item>United Airlines</item>
+        <item>Delta Airlines</item>
         <!-- Add more items as needed -->
     </string-array>
 </resources>

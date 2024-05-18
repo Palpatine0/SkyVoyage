@@ -10,10 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="ID (leave empty to query all)" />
-
+<!---->
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="20dp"
         android:text="Query"
         android:onClick="queryData" />
 

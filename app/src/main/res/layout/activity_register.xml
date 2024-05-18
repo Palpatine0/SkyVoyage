@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:padding="60dp"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity">
 
-    <!-- Login Header -->
+    <!-- Sign Up Header -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_marginTop="16dp"
         android:text="Submit"/>
 
-    <!-- Register Button -->
+    <!-- Login Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
@@ -63,5 +63,4 @@
         android:text="Sign In"
         android:textColor="@color/expedia_blue"
         style="@style/Widget.MaterialComponents.Button.TextButton"/>
-
 </LinearLayout>

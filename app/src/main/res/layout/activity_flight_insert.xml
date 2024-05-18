@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -13,16 +12,37 @@
         android:hint="ID" />
 
     <EditText
-        android:id="@+id/et_time"
+        android:id="@+id/et_departure_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Time" />
+        android:hint="Departure Time"
+        android:focusable="false" />
+
+    <Button
+        android:id="@+id/btn_select_departure_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Departure Time" />
+
+    <EditText
+        android:id="@+id/et_arrival_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Arrival Time"
+        android:focusable="false" />
+
+    <Button
+        android:id="@+id/btn_select_arrival_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Arrival Time" />
 
     <EditText
         android:id="@+id/et_duration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Duration" />
+        android:hint="Duration"
+        android:enabled="false" />
 
     <EditText
         android:id="@+id/et_route"
@@ -40,7 +60,8 @@
         android:id="@+id/et_airline_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Airline Name" />
+        android:hint="Airline Name"
+        android:enabled="false" />
 
     <Spinner
         android:id="@+id/sp_airline_logo"
@@ -54,9 +75,14 @@
         android:layout_height="wrap_content"
         android:hint="Count" />
 
+
     <Button
-        android:layout_width="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Insert"
-        android:onClick="insertData" />
+        android:padding="16dp"
+        android:textSize="20dp"
+        android:onClick="insertData"
+        />
 </LinearLayout>
