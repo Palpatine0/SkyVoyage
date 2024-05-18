@@ -32,5 +32,11 @@
         android:layout_height="wrap_content"
         android:onClick="deleteData"
         android:text="Delete Data" />
-
+    <Button
+        android:layout_marginTop="360dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/gray"
+        android:onClick="login"
+        android:text="LOGIN" />
 </LinearLayout>

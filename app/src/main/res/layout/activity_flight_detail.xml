@@ -60,7 +60,7 @@
                     android:id="@+id/ivAirlineLogo"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/frontier_airline"
+                    android:src="@drawable/frontier_airlines"
                     android:contentDescription="Airline logo"/>
 
                 <TextView
