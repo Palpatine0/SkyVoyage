@@ -56,4 +56,19 @@ public class UserMySQLiteOpenHelper extends SQLiteOpenHelper {
         }
         return isValid;
     }
+
+    public boolean isUsernameExists(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME_USER,
+                new String[]{"id"},
+                "username = ?",
+                new String[]{username},
+                null, null, null);
+
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        db.close();
+        return exists;
+    }
+
 }
