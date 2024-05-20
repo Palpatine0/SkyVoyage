@@ -38,15 +38,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             String password = et_password.getText().toString().trim();
 
             if (!username.isEmpty() && !password.isEmpty()) {
-                User newUser = new User(username, password);
-                long result = userMySQLiteOpenHelper.insertUserData(newUser);
-
-                if (result != -1) {
-                    Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
-                    Intent intentLogin = new Intent(RegisterActivity.this, LoginActivity.class);
-                    startActivity(intentLogin);
+                if (userMySQLiteOpenHelper.isUsernameExists(username)) {
+                    Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show();
+                    User newUser = new User(username, password);
+                    long result = userMySQLiteOpenHelper.insertUserData(newUser);
+
+                    if (result != -1) {
+                        Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
+                        Intent intentLogin = new Intent(RegisterActivity.this, LoginActivity.class);
+                        startActivity(intentLogin);
+                    } else {
+                        Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
             } else {
                 Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
