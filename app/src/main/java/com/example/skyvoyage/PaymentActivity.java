@@ -1,5 +1,6 @@
 package com.example.skyvoyage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,11 +13,13 @@ import com.google.android.material.card.MaterialCardView;
 
 public class PaymentActivity extends AppCompatActivity {
 
-    private EditText etCardNumber, etExpiryDate, etCVV;
     private Button btnProceedToPayment;
     private MaterialCardView paypalCard, applePayCard;
     private TextView paypalText, applePayText;
     private ImageView paypalRadio, applePayRadio;
+
+    private int selectedPaymentMethod = -1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +44,12 @@ public class PaymentActivity extends AppCompatActivity {
         applePayRadio = applePayCard.findViewById(R.id.itemRadio);
 
         paypalCard.setOnClickListener(v -> {
-            setSelectedPaymentMethod(paypalCard, paypalRadio);
+            setSelectedPaymentMethod(0, paypalCard, paypalRadio);
             setDeselectedPaymentMethod(applePayCard, applePayRadio);
         });
 
         applePayCard.setOnClickListener(v -> {
-            setSelectedPaymentMethod(applePayCard, applePayRadio);
+            setSelectedPaymentMethod(1, applePayCard, applePayRadio);
             setDeselectedPaymentMethod(paypalCard, paypalRadio);
         });
 
@@ -58,31 +61,26 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
 
-    private void setSelectedPaymentMethod(MaterialCardView card, ImageView radio) {
-        card.setChecked(true);
+    private void setSelectedPaymentMethod(int paymentMethod, MaterialCardView card, ImageView radio) {
+        selectedPaymentMethod = paymentMethod;
+        card.setCardBackgroundColor(getResources().getColor(R.color.selected_color));
         radio.setBackgroundResource(R.drawable.checked);
     }
 
     private void setDeselectedPaymentMethod(MaterialCardView card, ImageView radio) {
-        card.setChecked(false);
+        card.setCardBackgroundColor(getResources().getColor(R.color.deselected_color));
         radio.setBackgroundResource(R.drawable.unchecked);
     }
 
+
     private void handlePayment() {
-        if (!paypalCard.isChecked() && !applePayCard.isChecked()) {
+        if (selectedPaymentMethod == -1) {
             Toast.makeText(this, "Please select a payment method", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String paymentMethod = paypalCard.isChecked() ? "PayPal" : "Apple Pay";
-        String cardNumber = etCardNumber.getText().toString().trim();
-        String expiryDate = etExpiryDate.getText().toString().trim();
-        String cvv = etCVV.getText().toString().trim();
+        String paymentMethod = selectedPaymentMethod == 0 ? "PayPal" : "Apple Pay";
 
-        if (cardNumber.isEmpty() || expiryDate.isEmpty() || cvv.isEmpty()) {
-            Toast.makeText(this, "Please fill in all payment details", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         // Implement the payment processing logic here
         // For the purpose of this example, we will just show a toast message
@@ -90,5 +88,9 @@ public class PaymentActivity extends AppCompatActivity {
 
         // You may also want to navigate to a confirmation page or close the activity
         // finish(); // Uncomment to close the activity after payment
+
+        Intent intent = new Intent(PaymentActivity.this, FlightListingsActivity.class);
+        startActivity(intent);
     }
+
 }

@@ -54,12 +54,12 @@
             <Button
                 android:id="@+id/btnAddCreditCard"
                 android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
                 android:backgroundTint="@color/expedia_blue"
                 android:padding="8dp"
                 android:text="Add Credit Card"
-                android:textSize="30px"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="30px" />
         </LinearLayout>
 
 
@@ -82,8 +82,6 @@
             android:padding="6dp">
 
 
-            <!-- res/layout/activity_payment.xml -->
-            <!-- res/layout/activity_payment.xml -->
             <LinearLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
