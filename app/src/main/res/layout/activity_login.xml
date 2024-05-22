@@ -55,6 +55,42 @@
             android:inputType="textPassword"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Validation Code Field -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingBottom="16dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Validation Code">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_validation_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_validation_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1234"
+            android:textColor="@color/expedia_blue"
+            android:background="@color/expedia_yellow"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+
     <!-- Submit Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_submit"

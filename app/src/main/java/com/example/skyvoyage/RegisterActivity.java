@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btn_submit, btn_login;
-    EditText et_username, et_password, et_confirm_password;
+    EditText et_username, et_password, et_confirm_password, et_validation_code;
+    TextView tv_validation_code;
     UserMySQLiteOpenHelper userMySQLiteOpenHelper;
+    String generatedCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +29,22 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         et_username = findViewById(R.id.et_username);
         et_password = findViewById(R.id.et_password);
         et_confirm_password = findViewById(R.id.et_confirm_password);
+        et_validation_code = findViewById(R.id.et_validation_code);
+        tv_validation_code = findViewById(R.id.tv_validation_code);
 
         btn_submit.setOnClickListener(this);
         btn_login.setOnClickListener(this);
+        tv_validation_code.setOnClickListener(this);
 
         userMySQLiteOpenHelper = new UserMySQLiteOpenHelper(this);
+        generateValidationCode();
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.btn_submit) {
-            if (validateInputs()) {
+            if (validateInputs() && validateCode()) {
                 String username = et_username.getText().toString().trim();
                 String password = et_password.getText().toString().trim();
 
@@ -58,6 +67,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         } else if (id == R.id.btn_login) {
             Intent intentLogin = new Intent(RegisterActivity.this, LoginActivity.class);
             startActivity(intentLogin);
+        } else if (id == R.id.tv_validation_code) {
+            generateValidationCode();
         }
     }
 
@@ -65,6 +76,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String username = et_username.getText().toString().trim();
         String password = et_password.getText().toString().trim();
         String confirmPassword = et_confirm_password.getText().toString().trim();
+        String validationCode = et_validation_code.getText().toString().trim();
 
         if (username.isEmpty()) {
             et_username.setError("Please enter a username");
@@ -90,6 +102,29 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
 
+        if (validationCode.isEmpty()) {
+            et_validation_code.setError("Please enter the validation code");
+            et_validation_code.requestFocus();
+            return false;
+        }
+
         return true;
+    }
+
+    private boolean validateCode() {
+        String code = et_validation_code.getText().toString().trim();
+        if (!code.equals(generatedCode)) {
+            et_validation_code.setError("Invalid validation code");
+            et_validation_code.requestFocus();
+            generateValidationCode();
+            return false;
+        }
+        return true;
+    }
+
+    private void generateValidationCode() {
+        Random random = new Random();
+        generatedCode = String.format("%04d", random.nextInt(10000));
+        tv_validation_code.setText(generatedCode);
     }
 }
