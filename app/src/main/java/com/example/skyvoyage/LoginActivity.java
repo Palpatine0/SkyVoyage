@@ -37,10 +37,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent intentRegister = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intentRegister);
         } else if (id == R.id.btn_submit) {
-            String username = et_username.getText().toString().trim();
-            String password = et_password.getText().toString().trim();
+            if (validateInputs()) {
+                String username = et_username.getText().toString().trim();
+                String password = et_password.getText().toString().trim();
 
-            if (!username.isEmpty() && !password.isEmpty()) {
                 boolean isValid = userMySQLiteOpenHelper.validateUser(username, password);
                 if (isValid) {
                     Intent intentFlightListings = new Intent(LoginActivity.this, FlightListingsActivity.class);
@@ -48,9 +48,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 } else {
                     Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private boolean validateInputs() {
+        String username = et_username.getText().toString().trim();
+        String password = et_password.getText().toString().trim();
+
+        if (username.isEmpty()) {
+            et_username.setError("Please enter a username");
+            et_username.requestFocus();
+            return false;
+        }
+
+        if (password.isEmpty()) {
+            et_password.setError("Please enter a password");
+            et_password.requestFocus();
+            return false;
+        }
+
+        return true;
     }
 }
