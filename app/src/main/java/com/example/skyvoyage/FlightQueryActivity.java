@@ -1,6 +1,7 @@
 package com.example.skyvoyage;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -39,24 +40,24 @@ public class FlightQueryActivity extends AppCompatActivity {
     private void showData(List<Flight> flights) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Flight flight : flights) {
-            stringBuilder.append("ID: ");
+            stringBuilder.append("<b>ID:</b> ");
             stringBuilder.append(flight.getId());
-            stringBuilder.append(", Time: ");
+            stringBuilder.append("<br><b>Time:</b> ");
             stringBuilder.append(flight.getTime());
-            stringBuilder.append(", Duration: ");
+            stringBuilder.append("<br><b>Duration:</b> ");
             stringBuilder.append(flight.getDuration());
-            stringBuilder.append(", Route: ");
+            stringBuilder.append("<br><b>Route:</b> ");
             stringBuilder.append(flight.getRoute());
-            stringBuilder.append(", Price: ");
+            stringBuilder.append("<br><b>Price:</b> ");
             stringBuilder.append(flight.getPrice());
-            stringBuilder.append(", Airline: ");
+            stringBuilder.append("<br><b>Airline:</b> ");
             stringBuilder.append(flight.getAirlineName());
-            stringBuilder.append(", Logo: ");
+            stringBuilder.append("<br><b>Logo:</b> ");
             stringBuilder.append(flight.getAirlineLogo());
-            stringBuilder.append(", Count: ");
+            stringBuilder.append("<br><b>Count:</b> ");
             stringBuilder.append(flight.getCount());
-            stringBuilder.append("\n");
+            stringBuilder.append("<br><br>");
         }
-        tvResult.setText(stringBuilder.toString());
+        tvResult.setText(Html.fromHtml(stringBuilder.toString()));
     }
 }
