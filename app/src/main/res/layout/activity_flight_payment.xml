@@ -100,7 +100,6 @@
         </LinearLayout>
 
 
-        <!-- Proceed to Payment Button -->
         <Button
             android:id="@+id/btnProceedToPayment"
             android:layout_width="match_parent"

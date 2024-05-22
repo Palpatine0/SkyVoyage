@@ -26,8 +26,13 @@ public class AdminActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void btnClientPage(View view) {
+    public void btnLogin(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void btnListing(View view) {
+        Intent intent = new Intent(this, FlightListingsActivity.class);
         startActivity(intent);
     }
 }
