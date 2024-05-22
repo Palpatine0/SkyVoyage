@@ -5,13 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="60dp"
     tools:context=".AdminActivity">
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:src="@drawable/expedia"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Admin Panel"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingTop="24dp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
         android:onClick="btnFlightManage"
         android:text="Manage Flights" />
 
@@ -26,8 +42,15 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="400dp"
+        android:backgroundTint="@color/expedia_yellow"
+        android:onClick="btnLogin"
+        android:textSize="18dp"
+        android:text="To Page Login" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:backgroundTint="@color/gray"
-        android:onClick="btnClientPage"
-        android:text="Go to Client Page" />
+        android:onClick="btnListing"
+        android:textSize="18dp"
+        android:text="To Page Listing" />
 </LinearLayout>
