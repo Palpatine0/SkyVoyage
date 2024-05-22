@@ -13,59 +13,56 @@
         android:theme="@style/Theme.SkyVoyage"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".UserManageActivity"
             android:exported="true" />
+        <activity
+            android:name=".UserDeleteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserQueryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserUpdateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserInsertActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-
-        <!--Section 1-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" /> <!-- Section 1 -->
         <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
+            android:exported="true">
 
-        <!--Section 2-->
+         </activity>
         <activity
             android:name=".FlightListingsActivity"
             android:exported="true">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-
-        <!--Section 3-->
+         </activity>
         <activity
             android:name=".FlightDetailActivity"
             android:exported="true" />
-
-        <!--Section 4-->
         <activity
             android:name=".FlightOrderActivity"
             android:exported="true" />
-
-        <!--Section 5-->
         <activity
             android:name=".PaymentActivity"
             android:exported="true" />
-
-
-        <!--CURD-->
         <activity
-            android:name=".FlightCRUDActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".FlightManageActivity"
+            android:exported="true" />
         <activity
             android:name=".FlightQueryActivity"
             android:exported="true" />
@@ -78,9 +75,6 @@
         <activity
             android:name=".FlightDeleteActivity"
             android:exported="true" />
-
-
-
     </application>
 
 </manifest>

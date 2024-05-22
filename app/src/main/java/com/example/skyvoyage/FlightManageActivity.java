@@ -7,12 +7,12 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class FlightCRUDActivity extends AppCompatActivity {
+public class FlightManageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flight_crud);
+        setContentView(R.layout.activity_flight_manage);
     }
 
     public void insertData(View view) {
@@ -35,8 +35,4 @@ public class FlightCRUDActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void login(View view) {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
 }

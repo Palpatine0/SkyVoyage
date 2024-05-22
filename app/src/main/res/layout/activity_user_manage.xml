@@ -6,37 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FlightCRUDActivity"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".UserManageActivity">
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="insertData"
-        android:text="Insert Data" />
+        android:onClick="insertUserData"
+        android:text="Insert User" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="updateData"
-        android:text="Update Data" />
+        android:onClick="updateUserData"
+        android:text="Update User" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="queryData"
-        android:text="Query Data" />
+        android:onClick="queryUserData"
+        android:text="Query User" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="deleteData"
-        android:text="Delete Data" />
-    <Button
-        android:layout_marginTop="360dp"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:backgroundTint="@color/gray"
-        android:onClick="login"
-        android:text="LOGIN" />
+        android:onClick="deleteUserData"
+        android:text="Delete User" />
 </LinearLayout>
