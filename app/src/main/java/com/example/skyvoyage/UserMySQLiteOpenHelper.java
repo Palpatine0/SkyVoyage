@@ -71,4 +71,69 @@ public class UserMySQLiteOpenHelper extends SQLiteOpenHelper {
         return exists;
     }
 
+    public int updateUserData(User user) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("password", user.getPassword());
+        return db.update(TABLE_NAME_USER, values, "username = ?", new String[]{user.getUsername()});
+    }
+
+    public int deleteUserByUsername(String username) {
+        SQLiteDatabase db = getWritableDatabase();
+        return db.delete(TABLE_NAME_USER, "username = ?", new String[]{username});
+    }
+
+    public List<User> queryAllUsers() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<User> userList = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME_USER,
+                new String[]{"username", "password"},
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                String username = cursor.getString(cursor.getColumnIndex("username"));
+                String password = cursor.getString(cursor.getColumnIndex("password"));
+
+                User user = new User(username, password);
+                userList.add(user);
+            }
+            cursor.close();
+        }
+        return userList;
+    }
+
+    public List<User> queryUserByUsername(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<User> userList = new ArrayList<>();
+        Cursor cursor = db.query(
+                TABLE_NAME_USER,
+                new String[]{"username", "password"},
+                "username = ?",
+                new String[]{username},
+                null,
+                null,
+                null
+        );
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                String userUsername = cursor.getString(cursor.getColumnIndex("username"));
+                String userPassword = cursor.getString(cursor.getColumnIndex("password"));
+
+                User user = new User(userUsername, userPassword);
+                userList.add(user);
+            }
+            cursor.close();
+        }
+        return userList;
+    }
+
+
 }

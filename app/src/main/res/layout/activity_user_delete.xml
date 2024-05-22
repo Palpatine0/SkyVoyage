@@ -6,29 +6,16 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/et_id"
+        android:id="@+id/et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ID (leave empty to query all)" />
+        android:hint="Enter Username to Delete" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:textSize="20dp"
-        android:text="Query"
-        android:onClick="queryData" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="16dp">
-
-        <TextView
-            android:id="@+id/tv_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp" />
-    </ScrollView>
-
+        android:text="Delete User"
+        android:onClick="deleteUser" />
 </LinearLayout>
