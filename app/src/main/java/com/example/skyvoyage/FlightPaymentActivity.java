@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import com.google.android.material.card.MaterialCardView;
 
-public class PaymentActivity extends AppCompatActivity {
+public class FlightPaymentActivity extends AppCompatActivity {
 
     private Button btnProceedToPayment;
     private MaterialCardView paypalCard, applePayCard;
@@ -25,7 +24,9 @@ public class PaymentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payment);
+        setContentView(R.layout.activity_flight_payment);
+
+        int flightId = getIntent().getIntExtra("FLIGHT_ID", -1);
 
         btnProceedToPayment = findViewById(R.id.btnProceedToPayment);
 
@@ -54,7 +55,7 @@ public class PaymentActivity extends AppCompatActivity {
             setDeselectedPaymentMethod(paypalCard, paypalRadio);
         });
 
-        btnProceedToPayment.setOnClickListener(v -> handlePayment());
+        btnProceedToPayment.setOnClickListener(v -> handlePayment(flightId));
     }
 
     private void setSelectedPaymentMethod(int paymentMethod, MaterialCardView card, ImageView radio) {
@@ -68,16 +69,23 @@ public class PaymentActivity extends AppCompatActivity {
         radio.setBackgroundResource(R.drawable.unchecked);
     }
 
-    private void handlePayment() {
+    private void handlePayment(int flightId) {
         if (selectedPaymentMethod == -1) {
             Toast.makeText(this, "Please select a payment method", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        showQrCodeDialog();
+        // Update flight ticket count in the database
+        FlightMySQLiteOpenHelper dbHelper = new FlightMySQLiteOpenHelper(this);
+        Flight flight = dbHelper.queryFromDbById(flightId).get(0);
+        int updatedCount = flight.getCount() - 1;
+        flight.setCount(updatedCount);
+        dbHelper.updateData(flight);
+
+        showQrCodeDialog(flightId);
     }
 
-    private void showQrCodeDialog() {
+    private void showQrCodeDialog(int flightId) {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.dialog_qr_code);
 
@@ -96,8 +104,10 @@ public class PaymentActivity extends AppCompatActivity {
             // Simulate payment success
             String paymentMethod = selectedPaymentMethod == 0 ? "PayPal" : "Apple Pay";
             Toast.makeText(this, "Payment successful with " + paymentMethod, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(PaymentActivity.this, FlightListingsActivity.class);
+            Intent intent = new Intent(FlightPaymentActivity.this, FlightListingsActivity.class);
+            intent.putExtra("FLIGHT_ID", flightId);
             startActivity(intent);
         }, 5000); // 10000 milliseconds = 10 seconds
     }
+
 }

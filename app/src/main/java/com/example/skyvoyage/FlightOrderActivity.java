@@ -2,7 +2,6 @@ package com.example.skyvoyage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -59,9 +58,11 @@ public class FlightOrderActivity extends AppCompatActivity {
         btnSelectInsurance = findViewById(R.id.btnSelectInsurance);
 
         btnProceedToCheckout.setOnClickListener(v -> {
-            Intent intent = new Intent(FlightOrderActivity.this, PaymentActivity.class);
+            Intent intent = new Intent(FlightOrderActivity.this, FlightPaymentActivity.class);
+            intent.putExtra("FLIGHT_ID", flight.getId());  // Pass flight ID
             startActivity(intent);
         });
+
     }
 
     private void populateFlightDetails() {
