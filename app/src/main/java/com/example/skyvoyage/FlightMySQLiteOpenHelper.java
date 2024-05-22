@@ -61,7 +61,6 @@ public class FlightMySQLiteOpenHelper extends SQLiteOpenHelper {
         return db.update(TABLE_NAME_FLIGHT, values, "id = ?", new String[]{String.valueOf(flight.getId())});
     }
 
-
     public List<Flight> queryAllFromDb() {
         SQLiteDatabase db = this.getWritableDatabase();
         List<Flight> flightList = new ArrayList<>();
@@ -125,5 +124,4 @@ public class FlightMySQLiteOpenHelper extends SQLiteOpenHelper {
         }
         return flightList;
     }
-
 }

@@ -90,8 +90,6 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="30dp"/>
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -112,8 +110,7 @@
             android:text="1"
             android:textAppearance="@style/TextAppearance.Material3.Body2"
             android:textColor="@android:color/white"
-            android:layout_marginRight="5dp"
-            />
+            android:layout_marginRight="5dp"/>
 
         <TextView
             android:id="@+id/tvRemainingText"
@@ -121,9 +118,7 @@
             android:layout_height="wrap_content"
             android:text="Remains"
             android:textAppearance="@style/TextAppearance.Material3.Body2"
-            android:textColor="@android:color/white"
-            />
-
+            android:textColor="@android:color/white"/>
     </LinearLayout>
 
     <LinearLayout
@@ -139,8 +134,6 @@
         android:padding="6dp"
         android:visibility="gone">
 
-
-
         <TextView
             android:id="@+id/tvSoldOutText"
             android:layout_width="wrap_content"
@@ -148,11 +141,6 @@
             android:text="SOLD OUT"
             android:textAppearance="@style/TextAppearance.Material3.Body2"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
-
-            />
+            android:textStyle="bold"/>
     </LinearLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

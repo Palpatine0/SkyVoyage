@@ -3,6 +3,7 @@ package com.example.skyvoyage;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TimePicker;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +34,9 @@ public class FlightListingsActivity extends AppCompatActivity {
 
         Button btnSearchByTime = findViewById(R.id.btnSearchByTime);
         btnSearchByTime.setOnClickListener(v -> showCustomTimePickerDialog());
+
+        Button btnSearchByRoute = findViewById(R.id.btnSearchByRoute);
+        btnSearchByRoute.setOnClickListener(v -> showRouteSearchDialog());
     }
 
     private void showCustomTimePickerDialog() {
@@ -73,7 +76,7 @@ public class FlightListingsActivity extends AppCompatActivity {
             for (Flight flight : flightList) {
                 String[] times = flight.getTime().split(" - ");
                 Date departureTime = sdf.parse(times[0]);
-                if (departureTime.equals(startDate) || departureTime.after(startDate) && departureTime.before(endDate)) {
+                if (departureTime.equals(startDate) || (departureTime.after(startDate) && departureTime.before(endDate))) {
                     filteredFlights.add(flight);
                 }
             }
@@ -83,4 +86,43 @@ public class FlightListingsActivity extends AppCompatActivity {
 
         flightAdapter.updateData(filteredFlights);
     }
+
+    private void showRouteSearchDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_route_search);
+
+        EditText etRoute = dialog.findViewById(R.id.etRoute);
+        Button btnConfirmRoute = dialog.findViewById(R.id.btnConfirmRoute);
+
+        btnConfirmRoute.setOnClickListener(v -> {
+            String route = etRoute.getText().toString();
+            filterFlightsByRoute(route);
+            dialog.dismiss();
+        });
+
+        dialog.show();
+    }
+
+    private void filterFlightsByRoute(String route) {
+        List<Flight> filteredFlights = new ArrayList<>();
+
+        // Trim the input and convert to lower case for case-insensitive comparison
+        String trimmedRoute = route.trim().toLowerCase();
+
+        for (Flight flight : flightList) {
+            // Trim the route from the database and convert to lower case for comparison
+            String flightRoute = flight.getRoute().trim().toLowerCase();
+            if (flightRoute.contains(trimmedRoute)) {
+                filteredFlights.add(flight);
+            }
+        }
+
+        // Log the results for debugging
+        System.out.println("Search route: " + trimmedRoute);
+        System.out.println("Found " + filteredFlights.size() + " matching flights");
+
+        // Update the RecyclerView with the filtered data
+        flightAdapter.updateData(filteredFlights);
+    }
+
 }

@@ -82,20 +82,18 @@
             android:padding="6dp">
 
 
-            <LinearLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <include
-                    layout="@layout/selectable_item"
-                    android:id="@+id/paypalCard" />
+                    android:id="@+id/paypalCard"
+                    layout="@layout/selectable_item" />
 
                 <include
-                    layout="@layout/selectable_item"
-                    android:id="@+id/applePayCard" />
+                    android:id="@+id/applePayCard"
+                    layout="@layout/selectable_item" />
             </LinearLayout>
 
 
@@ -109,7 +107,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/expedia_blue"
             android:padding="16dp"
-            android:text="Proceed to Payment"
+            android:text="Confirm"
             android:textColor="@color/white" />
 
     </LinearLayout>
