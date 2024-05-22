@@ -24,17 +24,32 @@
         android:textAppearance="@style/TextAppearance.Material3.Body2"
         android:textColor="@color/gray" />
 
-    <Button
-        android:layout_gravity="center"
-        android:id="@+id/btnSearchByTime"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search by Time" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btnSearchByTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search by Time" />
+
+        <Button
+            android:id="@+id/btnSearchByRoute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search by Route"
+            android:layout_marginStart="16dp" />
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="20dp"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:nestedScrollingEnabled="false"/>
 </LinearLayout>
