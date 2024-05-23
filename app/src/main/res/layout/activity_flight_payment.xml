@@ -50,18 +50,24 @@
             android:orientation="vertical"
             android:padding="6dp">
 
+            <LinearLayout
+                android:id="@+id/paymentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnAddCreditCard"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
-                android:backgroundTint="@color/expedia_blue"
-                android:padding="8dp"
+                android:backgroundTint="@color/expedia_yellow"
+                android:padding="2dp"
                 android:text="Add Credit Card"
                 android:textColor="@color/white"
                 android:textSize="30px" />
         </LinearLayout>
-
 
         <TextView
             android:layout_width="match_parent"
@@ -81,8 +87,7 @@
             android:orientation="vertical"
             android:padding="6dp">
 
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -95,10 +100,7 @@
                     android:id="@+id/applePayCard"
                     layout="@layout/selectable_item" />
             </LinearLayout>
-
-
         </LinearLayout>
-
 
         <Button
             android:id="@+id/btnProceedToPayment"
@@ -108,6 +110,5 @@
             android:padding="16dp"
             android:text="Confirm"
             android:textColor="@color/white" />
-
     </LinearLayout>
 </ScrollView>

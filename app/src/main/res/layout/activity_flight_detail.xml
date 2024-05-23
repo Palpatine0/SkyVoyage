@@ -183,22 +183,6 @@
                     android:textColor="@color/gray"
                     android:paddingBottom="16dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Flexibility"
-                    android:textAppearance="@style/TextAppearance.Material3.Body1"
-                    android:textColor="@color/black"
-                    android:paddingBottom="4dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Change fee applies"
-                    android:textAppearance="@style/TextAppearance.Material3.Body2"
-                    android:textColor="@color/gray"
-                    android:paddingBottom="16dp"/>
-
                 <Button
                     android:id="@+id/btnSelectStandard"
                     android:layout_width="match_parent"
