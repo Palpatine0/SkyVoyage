@@ -90,6 +90,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return false;
         }
 
+        if (password.length() < 8) {
+            et_password.setError("Password must be at least 8 characters long");
+            et_password.requestFocus();
+            return false;
+        }
+
         if (confirmPassword.isEmpty()) {
             et_confirm_password.setError("Please confirm your password");
             et_confirm_password.requestFocus();
