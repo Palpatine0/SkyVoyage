@@ -79,6 +79,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return false;
         }
 
+        if (password.length() < 8) {
+            et_password.setError("Password must be at least 8 characters long");
+            et_password.requestFocus();
+            return false;
+        }
+
         return true;
     }
 
