@@ -19,7 +19,7 @@ SkyVoyage is an Android application designed to facilitate flight ticket booking
 ### Client
 
 <div align="center">
-    <img style="width: 200px" src="https://i.imghippo.com/files/Fy0Hc1719346885.jpg">
+    <img style="width: 200px" src="https://i.imghippo.com/files/lndC9772PWA.jpg">
     <img style="width: 200px" src="https://i.imghippo.com/files/gPVT01719346945.jpg">
     <img style="width: 200px" src="https://i.imghippo.com/files/G1kNf1719346978.jpg">
     <img style="width: 200px" src="https://i.imghippo.com/files/Tp8Cj1719347086.jpg">
@@ -28,7 +28,7 @@ SkyVoyage is an Android application designed to facilitate flight ticket booking
 ### Admin
 
 <div align="center">
-    <img style="width: 200px" src="https://i.imghippo.com/files/1WQSj1719346656.jpg">
+    <img style="width: 200px" src="https://i.imghippo.com/files/pYD7316AC.jpg">
     <img style="width: 200px" src="https://i.imghippo.com/files/DdJea1719346699.jpg">
     <img style="width: 200px" src="https://i.imghippo.com/files/NzYy31719346795.jpg">
     <img style="width: 200px" src="https://i.imghippo.com/files/IC6US1719346844.jpg">
