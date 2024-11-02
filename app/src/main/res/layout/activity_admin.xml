@@ -12,7 +12,7 @@
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:src="@drawable/expedia"
+        android:src="@drawable/sky_voyage"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="24dp"/>
 
